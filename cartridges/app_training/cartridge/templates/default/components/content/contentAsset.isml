@@ -1,6 +1,6 @@
 <isdecorate template="common/layout/page">
     <!-- dwMarker="content" dwContentID="${pdict.content.UUID}" -->
-    <isprint value="${pdict.content.body}" encoding="off" />
+    <iscomment> <isprint value="${pdict.content.body}" encoding="off" /> </iscomment>
     <!-- END_dwmarker -->
     <isinclude url="${URLUtils.url('Page-Include', 'cid', pdict.pid)}" />
 </isdecorate>
