@@ -10,3 +10,29 @@ ${pageVar}<br/>
 ${session.custom.sessionVar + 1}<br/>
 
 
+<div class="product-tile">
+    <!-- dwMarker="product" dwContentID="${product.uuid}" -->
+    <isinclude template="product/components/productTileImage" />
+    <div class="tile-body">
+        <isif condition="${pdict.display.swatches !== false}">
+            <isinclude template="product/components/productTileSwatch" />
+        </isif>
+        <img src="${pdict.product}" alt="${pdict.product}">
+        <isinclude template="product/components/productTileName" />
+
+        <isset name="productID" value="${pdict.product.ID}" scope="page" />
+        <isinclude url="${URLUtils.url('Tile-Show', 'pid', productID, 'swatches', true, 'ratings', true, 'showQuickView', false)}" />
+
+        <isset name="price" value="${product.price}" scope="page" />
+        <isif condition="${product.productType === 'set'}">
+            <isinclude template="product/components/pricing/setPrice" />
+        <iselse>
+            <isinclude template="product/components/pricing/main" />
+        </isif>
+
+        <isif condition="${pdict.display.ratings !== false}">
+            <isinclude template="product/productTileFooter" />
+        </isif>
+    </div>
+    <!-- END_dwmarker -->
+</div>
