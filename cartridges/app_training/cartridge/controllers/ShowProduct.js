@@ -9,4 +9,14 @@ server.get("ShowProduct", function(req, res, next) {
     return next();
 });
 
+server.get("RenderTemplate", function(req, res, next) {
+    res.render("dummy/dummy");
+    return next();
+});
+
+server.get("TestRemoteInclude", function(req, res, next) {
+    res.render("secondDummy/secondDummy");
+    return next();
+});
+
 module.exports = server.exports();
